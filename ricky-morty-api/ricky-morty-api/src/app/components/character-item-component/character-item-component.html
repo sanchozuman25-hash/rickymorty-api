@@ -1,0 +1,11 @@
+<div class="card h-100">
+    <img [src]="character()?.image" [alt]="character()?.name" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{ character()?.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ character()?.species }}</h6>
+        <span class="badge" [class]="statusClass()">{{ character()?.status }}</span>
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-primary" (click)="emitCharacterClicked()">Ver detalle</button>
+    </div>
+</div>

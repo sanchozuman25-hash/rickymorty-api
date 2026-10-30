@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-12">
+        <h3>Detalle Personaje</h3>
+    </div>
+</div>
+<div class="row">
+    @if (character(); as ch) {
+    <div class="col-12 col-md-4 mb-4">
+        <div class="card">
+            <img [src]="ch.image" [alt]="ch.name" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ ch.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{ ch.species }}</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Estado:</strong> {{ ch.status }}</li>
+                <li class="list-group-item"><strong>Género:</strong> {{ ch.gender }}</li>
+                @if (ch.type) {
+                <li class="list-group-item"><strong>Tipo:</strong> {{ ch.type }}</li>
+                }
+                <li class="list-group-item"><strong>Origen:</strong> {{ ch.origin.name }}</li>
+                <li class="list-group-item"><strong>Ubicación:</strong> {{ ch.location.name }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-12 col-md-8">
+        <h5>Episodios ({{ episodeIds().length }})</h5>
+        <div class="d-flex flex-wrap gap-2">
+            @for (id of episodeIds(); track id) {
+            <a class="btn btn-outline-primary btn-sm" [routerLink]="['/episode-detail', id]">Episodio {{ id }}</a>
+            }
+        </div>
+        <a routerLink="/character-list" class="btn btn-secondary mt-4">Volver</a>
+    </div>
+    }
+</div>

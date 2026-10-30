@@ -1,0 +1,25 @@
+<div class="row mb-4">
+    <div class="col-12 col-md-6">
+        <div class="input-group">
+            <input #searchInput type="text" class="form-control" placeholder="Buscar personaje por nombre..."
+                (keyup.enter)="onSearch(searchInput.value)">
+            <button class="btn btn-primary" type="button" (click)="onSearch(searchInput.value)">Buscar</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @for (item of characterList(); track item.id) {
+    <app-character-item-component [character]="item"
+        (characterClicked)="openCharacterModal($event)"></app-character-item-component>
+    } @empty {
+    <p>No se han encontrado personajes.</p>
+    }
+</div>
+
+@if (totalItems() > 0) {
+<div class="d-flex justify-content-center">
+    <ngb-pagination [collectionSize]="totalItems()" [pageSize]="20" [page]="page()" [maxSize]="5"
+        [ellipses]="true" [boundaryLinks]="true" (pageChange)="onPageChange($event)" />
+</div>
+}

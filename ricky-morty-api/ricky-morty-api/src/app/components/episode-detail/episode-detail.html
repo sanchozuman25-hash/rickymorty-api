@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-12">
+        <h3>Detalle Episodio</h3>
+    </div>
+</div>
+<div class="row">
+    @if (episode(); as ep) {
+    <div class="col-12 col-md-3 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ ep.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{ ep.episode }}</h6>
+                <p class="card-text">{{ ep.air_date }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-9">
+        <h5>Personajes ({{ characterIds().length }})</h5>
+        <div class="d-flex flex-wrap gap-2">
+            @for (id of characterIds(); track id) {
+            <a class="btn btn-outline-primary btn-sm" [routerLink]="['/character-detail', id]">Personaje {{ id }}</a>
+            }
+        </div>
+        <a routerLink="/episode-list" class="btn btn-secondary mt-4">Volver</a>
+    </div>
+    }
+</div>

@@ -1,0 +1,8 @@
+<div class="card h-100">
+    <div class="card-body">
+        <h5 class="card-title">{{ episode()?.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ episode()?.episode }}</h6>
+        <p class="card-text">{{ episode()?.air_date }}</p>
+        <a class="btn btn-primary" [routerLink]="['/episode-detail', episode()?.id]">Ver detalle</a>
+    </div>
+</div>
